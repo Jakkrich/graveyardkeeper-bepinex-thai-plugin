@@ -4,7 +4,7 @@
 
 ## ดาวน์โหลดม็อดพร้อมใช้
 
-Repository นี้เก็บ source code, คำแปล และเครื่องมือ build เท่านั้น **ไม่มีไฟล์ม็อดที่ compile แล้ว ไม่มี `font.ttf` และไม่มีไฟล์เกม** ผู้เล่นทั่วไปให้ดาวน์โหลดแพ็กพร้อมใช้จาก [Graveyard Keeper Mods บน Nexus Mods](https://www.nexusmods.com/graveyardkeeper/mods/) โดยค้นหา `GK2Thai` แล้วทำตาม [คู่มือติดตั้ง](docs/INSTALL_TH.md)
+Repository นี้เก็บ source code, คำแปล และเครื่องมือ build เท่านั้น **ไม่มีไฟล์ม็อดที่ compile แล้ว ไม่มี `font.ttf` และไม่มีไฟล์เกม** ผู้เล่นทั่วไปให้ดาวน์โหลดแพ็กพร้อมใช้จาก [Graveyard Keeper Mods บน Nexus Mods](https://www.nexusmods.com/graveyardkeeper/mods/184) โดยค้นหา `GK2Thai` แล้วทำตาม [คู่มือติดตั้ง](docs/INSTALL_TH.md)
 
 แพ็กพร้อมใช้ต้องมีไฟล์ต่อไปนี้:
 
