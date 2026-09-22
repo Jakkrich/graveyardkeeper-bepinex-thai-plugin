@@ -1,0 +1,10 @@
+GK1Thai uninstall baseline 2026-09-22T07:35:33.4176639Z
+PASS stock English locale reference
+PASS stock English no Thai payload
+PASS baseline menu labels exist
+PASS no plugin font bound
+STATE labels=10 locale=en
+SHA256 Graveyard Keeper_Data/Managed/Assembly-CSharp-firstpass.dll 9dc6def3b7715dd27eeb168ddc0af47e31c6f38d3fbee24bf592899392026498
+SHA256 Graveyard Keeper_Data/Managed/Assembly-CSharp.dll e72e4270e4b88dd0a87ca23c9cf1750aec4c4a0fedb40b6d2dae7902fc9c7fd8
+SHA256 Graveyard Keeper_Data/resources.assets 215c7981901a4b72d5db717666ba47ad3cc032527c95f58dc39d8af1293a69ca
+RESULT failures=0

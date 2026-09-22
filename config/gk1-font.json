@@ -1,0 +1,12 @@
+{
+  "font_file": "font.ttf",
+  "font_sha256": "98560a50f5c6430f8e6570fd315a0bf056470eb72e7fb812148f17fcfec4dd57",
+  "global_scale": 0.7,
+  "digit_spacing_px": 1,
+  "nominal_size": 16,
+  "raster_mode": "smooth",
+  "raster_density": 2,
+  "min_glyph_gap_px": 0.1,
+  "texture_filter": "point",
+  "replace_latin_and_digits": true
+}

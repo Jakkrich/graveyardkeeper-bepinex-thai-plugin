@@ -1,0 +1,7 @@
+UnityPy==1.25.3
+dnfile==0.18.0
+Pillow==12.3.0
+fonttools==4.65.0
+freetype-py==2.5.1
+uharfbuzz==0.56.1
+pythainlp==5.3.7

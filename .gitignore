@@ -1,0 +1,31 @@
+# Generated mod and test output
+/build/
+/dist/
+/payload/
+/backups/
+/tests/bin/
+**/__pycache__/
+*.py[cod]
+
+# Local inputs copied from Nexus Mods or an owned game installation
+/.local/
+
+# Runtime/install records
+/installed.json
+
+# Never commit compiled mods, game files, fonts, archives, or Unity payloads
+*.dll
+*.exe
+*.zip
+*.ttf
+*.bin
+*.assets
+*.png
+*.log
+
+# Editor and OS files
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

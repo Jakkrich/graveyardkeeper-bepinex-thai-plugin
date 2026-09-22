@@ -1,0 +1,94 @@
+GK1Thai isolated runtime QA 2026-09-22T07:38:58.5392256Z
+PASS main plugin active
+PASS seven prepared fonts
+PASS locale cloned
+PASS locale contains Unicode Thai
+PASS font 0 bound
+PASS font 0 raw preserved
+PASS font 0 processed PUA
+PASS font 0 onChange raw Unicode
+PASS font 0 repeat stable
+PASS font 0 measure matches
+PASS font 0 CJK stays CJK
+PASS font 0 Thai PUA word wrap
+PASS font 0 nonowned CJK rule
+PASS font 0 nonowned unchanged
+PASS font 1 bound
+PASS font 1 raw preserved
+PASS font 1 processed PUA
+PASS font 1 onChange raw Unicode
+PASS font 1 repeat stable
+PASS font 1 measure matches
+PASS font 1 CJK stays CJK
+PASS font 1 Thai PUA word wrap
+PASS font 1 nonowned CJK rule
+PASS font 1 nonowned unchanged
+PASS font 2 bound
+PASS font 2 raw preserved
+PASS font 2 processed PUA
+PASS font 2 onChange raw Unicode
+PASS font 2 repeat stable
+PASS font 2 measure matches
+PASS font 2 CJK stays CJK
+PASS font 2 Thai PUA word wrap
+PASS font 2 nonowned CJK rule
+PASS font 2 nonowned unchanged
+PASS font 3 bound
+PASS font 3 raw preserved
+PASS font 3 processed PUA
+PASS font 3 onChange raw Unicode
+PASS font 3 repeat stable
+PASS font 3 measure matches
+PASS font 3 CJK stays CJK
+PASS font 3 Thai PUA word wrap
+PASS font 3 nonowned CJK rule
+PASS font 3 nonowned unchanged
+PASS font 4 bound
+PASS font 4 raw preserved
+PASS font 4 processed PUA
+PASS font 4 onChange raw Unicode
+PASS font 4 repeat stable
+PASS font 4 measure matches
+PASS font 4 CJK stays CJK
+PASS font 4 Thai PUA word wrap
+PASS font 4 nonowned CJK rule
+PASS font 4 nonowned unchanged
+PASS font 5 bound
+PASS font 5 raw preserved
+PASS font 5 processed PUA
+PASS font 5 onChange raw Unicode
+PASS font 5 repeat stable
+PASS font 5 measure matches
+PASS font 5 CJK stays CJK
+PASS font 5 Thai PUA word wrap
+PASS font 5 nonowned CJK rule
+PASS font 5 nonowned unchanged
+PASS font 6 bound
+PASS font 6 raw preserved
+PASS font 6 processed PUA
+PASS font 6 onChange raw Unicode
+PASS font 6 repeat stable
+PASS font 6 measure matches
+PASS font 6 CJK stays CJK
+PASS font 6 Thai PUA word wrap
+PASS font 6 nonowned CJK rule
+PASS font 6 nonowned unchanged
+PASS UIInput excluded
+PASS German resource active
+PASS German font restored QA big_font
+PASS German font restored QA big_font_bold
+PASS German font restored QA gothic_font
+PASS German font restored QA micro_font
+PASS German font restored QA small_font
+PASS German font restored QA small_font_bold
+PASS German font restored QA tiny_font
+PASS English translation reapplied
+PASS English font rebound QA big_font
+PASS English font rebound QA big_font_bold
+PASS English font rebound QA gothic_font
+PASS English font rebound QA micro_font
+PASS English font rebound QA small_font
+PASS English font rebound QA small_font_bold
+PASS English font rebound QA tiny_font
+PASS English resource untouched
+RESULT failures=0
