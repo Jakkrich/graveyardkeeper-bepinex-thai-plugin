@@ -111,7 +111,7 @@ def package(output, force=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=BASE / 'dist/GKThai-0.1.0-candidate.zip')
+    parser.add_argument('--output', type=Path, default=BASE / 'dist/GKThai-0.1.0.zip')
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
     package(args.output, args.force)

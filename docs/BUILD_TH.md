@@ -154,13 +154,13 @@ python tools/package.py --force
 ไฟล์สุดท้ายอยู่ที่:
 
 ```text
-dist/GKThai-0.1.0-candidate.zip
+dist/GKThai-0.1.0.zip
 ```
 
 ตรวจสมาชิก ZIP:
 
 ```powershell
-tar -tf dist/GKThai-0.1.0-candidate.zip
+tar -tf dist/GKThai-0.1.0.zip
 ```
 
 ภายในต้องมีเฉพาะ plugin สองไฟล์นี้:
