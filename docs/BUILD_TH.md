@@ -163,13 +163,11 @@ dist/GKThai-0.1.0-candidate.zip
 tar -tf dist/GKThai-0.1.0-candidate.zip
 ```
 
-ภายในต้องมี plugin สองไฟล์นี้ และเอกสาร/manifest เท่านั้น:
+ภายในต้องมีเฉพาะ plugin สองไฟล์นี้:
 
 ```text
 BepInEx/plugins/GKThai/GKThai.Plugin.dll
 BepInEx/plugins/GKThai/font.ttf
-INSTALL_TH.md
-manifest.json
 ```
 
 Packager ตรวจ CRC, allowlist, embedded resource และ SHA-256 ก่อนส่งมอบ

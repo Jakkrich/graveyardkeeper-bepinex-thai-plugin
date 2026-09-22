@@ -30,7 +30,7 @@ class PackageTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             target = Path(temporary) / 'release.zip'
             members = {'BepInEx/plugins/GKThai/GKThai.Plugin.dll': b'dll',
-                       'BepInEx/plugins/GKThai/font.ttf': b'font', 'INSTALL_TH.md': b'doc'}
+                       'BepInEx/plugins/GKThai/font.ttf': b'font'}
             package.write_verified_zip(target, members)
             package.verify_zip(target, members)
             with zipfile.ZipFile(target, 'a') as archive:

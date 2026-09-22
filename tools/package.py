@@ -1,4 +1,4 @@
-"""Package only verified GK1 plugin/font outputs and Thai installation guidance."""
+"""Package only verified GK1 plugin and font outputs."""
 import argparse
 import hashlib
 import json
@@ -105,13 +105,6 @@ def package(output, force=False):
     if digest(expected['payload.bin']) != metadata['payload_sha256'] or digest(expected['glyphs.png']) != metadata['glyphs_sha256']:
         raise ValueError('Payload hashes differ from metadata')
     members = {'BepInEx/plugins/GKThai/' + name: data for name, data in files.items()}
-    members['INSTALL_TH.md'] = (BASE / 'docs/INSTALL_TH.md').read_bytes()
-    release = dict(game='Graveyard Keeper 1', version='0.1.0-candidate', status='candidate; automated pristine runtime QA passed, manual multi-scene QA remains',
-                   files={name: digest(data) for name, data in members.items()},
-                   baseline_sha256=metadata['baseline_sha256'], font_sha256=metadata['font_sha256'],
-                   config=metadata['config'], translation_count=metadata['translation_count'],
-                   build_manifest_sha256=sha(manifest_path))
-    members['manifest.json'] = (json.dumps(release, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
     write_verified_zip(output, members, force)
     print(json.dumps({'output': str(output), 'sha256': sha(output), 'members': sorted(members)}, indent=2))
 
