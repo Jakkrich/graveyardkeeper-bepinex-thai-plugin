@@ -4,7 +4,7 @@ using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 
-namespace GK2Thai.Plugin.Runtime
+namespace GKThai.Plugin.Runtime
 {
     internal static class LocaleOverride
     {
@@ -35,7 +35,7 @@ namespace GK2Thai.Plugin.Runtime
                 next.aliases_2 = new List<string>(locale.aliases_2);
                 next.InitHashDictionary();
                 original = locale; clone = next; Current.SetValue(null, clone);
-                Plugin.Log.LogInfo("GK1Thai locale active: " + translated + " Unicode rows; original resource untouched");
+                Plugin.Log.LogInfo("GKThai locale active: " + translated + " Unicode rows; original resource untouched");
             }
             catch { UnityEngine.Object.Destroy(next); throw; }
         }

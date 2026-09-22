@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
-using GK2Thai.Plugin.Runtime;
+using GKThai.Plugin.Runtime;
 
-namespace GK2Thai.Plugin.Patches
+namespace GKThai.Plugin.Patches
 {
     [HarmonyPatch(typeof(NGUIText), "GetGlyph")]
     internal static class NguiGlyphPatch

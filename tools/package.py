@@ -29,10 +29,10 @@ def verify_paths(expected):
 
 
 def verify_embedded(resources, expected):
-    if set(resources) != {'GK1Thai.' + name for name in expected}:
+    if set(resources) != {'GKThai.' + name for name in expected}:
         raise ValueError('Embedded resource names differ from expected payload')
     for name, data in expected.items():
-        if resources['GK1Thai.' + name] != data:
+        if resources['GKThai.' + name] != data:
             raise ValueError('Embedded resource mismatch: ' + name)
 
 
@@ -90,7 +90,7 @@ def package(output, force=False):
     manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
     verify_paths(manifest['inputs'])
     outputs = manifest['outputs']
-    names = ('GK2Thai.Plugin.dll', 'font.ttf')
+    names = ('GKThai.Plugin.dll', 'font.ttf')
     if set(outputs) != set(names):
         raise ValueError('Build outputs must contain exactly plugin DLL and font.ttf')
     files = {name: (build / name).read_bytes() for name in names}
@@ -98,13 +98,13 @@ def package(output, force=False):
         if digest(data) != outputs[name]:
             raise ValueError('Build output hash mismatch: ' + name)
     expected = {name: (BASE / 'payload' / name).read_bytes() for name in RESOURCES}
-    verify_embedded(embedded_resources(build / 'GK2Thai.Plugin.dll'), expected)
+    verify_embedded(embedded_resources(build / 'GKThai.Plugin.dll'), expected)
     metadata = json.loads(expected['metadata.json'])
     if digest(files['font.ttf']) != metadata['font_sha256']:
         raise ValueError('Font differs from embedded payload source')
     if digest(expected['payload.bin']) != metadata['payload_sha256'] or digest(expected['glyphs.png']) != metadata['glyphs_sha256']:
         raise ValueError('Payload hashes differ from metadata')
-    members = {'BepInEx/plugins/GK2Thai/' + name: data for name, data in files.items()}
+    members = {'BepInEx/plugins/GKThai/' + name: data for name, data in files.items()}
     members['INSTALL_TH.md'] = (BASE / 'docs/INSTALL_TH.md').read_bytes()
     release = dict(game='Graveyard Keeper 1', version='0.1.0-candidate', status='candidate; automated pristine runtime QA passed, manual multi-scene QA remains',
                    files={name: digest(data) for name, data in members.items()},
@@ -118,7 +118,7 @@ def package(output, force=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=BASE / 'dist/GK2Thai-GK1-0.1.0-candidate.zip')
+    parser.add_argument('--output', type=Path, default=BASE / 'dist/GKThai-0.1.0-candidate.zip')
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
     package(args.output, args.force)

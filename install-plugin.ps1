@@ -22,16 +22,16 @@ foreach ($entry in $manifest.outputs.PSObject.Properties) {
 }
 if ($CheckOnly) { Write-Host 'PASS: pristine game and build hashes verified. No files changed.'; exit 0 }
 if (Get-Process -Name 'Graveyard Keeper' -ErrorAction SilentlyContinue) { throw 'Close Graveyard Keeper before installation.' }
-$destination = [IO.Path]::GetFullPath((Join-Path $game 'BepInEx/plugins/GK2Thai'))
+$destination = [IO.Path]::GetFullPath((Join-Path $game 'BepInEx/plugins/GKThai'))
 $plugins = [IO.Path]::GetFullPath((Join-Path $game 'BepInEx/plugins'))
 if ((Split-Path -Parent $destination) -ne $plugins) { throw 'Invalid destination' }
 $backupRoot = Join-Path $PSScriptRoot ('backups/install-' + (Get-Date -Format 'yyyyMMdd-HHmmssfff'))
 New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
-$backup = Join-Path $backupRoot 'GK2Thai'
+$backup = Join-Path $backupRoot 'GKThai'
 if (Test-Path -LiteralPath $destination) { Move-Item -LiteralPath $destination -Destination $backup }
 try {
     New-Item -ItemType Directory -Path $destination -Force | Out-Null
-    foreach ($name in @('GK2Thai.Plugin.dll','font.ttf')) {
+    foreach ($name in @('GKThai.Plugin.dll','font.ttf')) {
         Copy-Item -LiteralPath (Join-Path $build $name) -Destination (Join-Path $destination $name)
         if ((Get-FileHash -LiteralPath (Join-Path $destination $name) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manifest.outputs.$name) { throw "Installed hash mismatch: $name" }
     }

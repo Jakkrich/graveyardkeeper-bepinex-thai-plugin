@@ -1,4 +1,4 @@
-namespace GK2Thai.Plugin.Runtime
+namespace GKThai.Plugin.Runtime
 {
     internal static class ThaiGlyphMetrics
     {

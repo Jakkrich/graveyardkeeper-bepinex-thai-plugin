@@ -4,13 +4,13 @@
 
 ## ดาวน์โหลดม็อดพร้อมใช้
 
-Repository นี้เก็บ source code, คำแปล และเครื่องมือ build เท่านั้น **ไม่มีไฟล์ม็อดที่ compile แล้ว ไม่มี `font.ttf` และไม่มีไฟล์เกม** ผู้เล่นทั่วไปให้ดาวน์โหลดแพ็กพร้อมใช้จาก [Graveyard Keeper Mods บน Nexus Mods](https://www.nexusmods.com/graveyardkeeper/mods/184) โดยค้นหา `GK2Thai` แล้วทำตาม [คู่มือติดตั้ง](docs/INSTALL_TH.md)
+Repository นี้เก็บ source code, คำแปล และเครื่องมือ build เท่านั้น **ไม่มีไฟล์ม็อดที่ compile แล้ว ไม่มี `font.ttf` และไม่มีไฟล์เกม** ผู้เล่นทั่วไปให้ดาวน์โหลดแพ็กพร้อมใช้จาก [GKThai บน Nexus Mods](https://www.nexusmods.com/graveyardkeeper/mods/184) แล้วทำตาม [คู่มือติดตั้ง](docs/INSTALL_TH.md)
 
 แพ็กพร้อมใช้ต้องมีไฟล์ต่อไปนี้:
 
 ```text
-BepInEx/plugins/GK2Thai/
-├── GK2Thai.Plugin.dll
+BepInEx/plugins/GKThai/
+├── GKThai.Plugin.dll
 └── font.ttf
 ```
 
@@ -20,7 +20,7 @@ BepInEx/plugins/GK2Thai/
 - รองรับฟอนต์ NGUI 7 แบบ, Thai shaping, HD2 glyph และการตัดคำภาษาไทย
 - รักษา icon token, placeholder, ตัวเลข และ markup ของเกม
 - ตรวจ SHA-256 ของเกม, payload และฟอนต์ก่อนเปิดใช้งาน
-- ถอนม็อดได้ด้วยการนำโฟลเดอร์ `BepInEx/plugins/GK2Thai` ออก
+- ถอนม็อดได้ด้วยการนำโฟลเดอร์ `BepInEx/plugins/GKThai` ออก
 
 ## Build จาก source
 
@@ -29,7 +29,7 @@ BepInEx/plugins/GK2Thai/
 ## โครงสร้างสำคัญ
 
 ```text
-GK2Thai.Plugin/       C# runtime plugin และ Harmony patches
+GKThai.Plugin/        C# runtime plugin และ Harmony patches
 translations/th.csv  คำแปล Unicode ไทย
 config/               ค่า font pipeline และรายการ token ของเกม
 tools/                payload builder, source exporter และ packager

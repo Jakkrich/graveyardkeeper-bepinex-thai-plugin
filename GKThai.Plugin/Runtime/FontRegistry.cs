@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GK2Thai.Plugin.Runtime
+namespace GKThai.Plugin.Runtime
 {
     internal static class FontRegistry
     {
@@ -17,14 +17,14 @@ namespace GK2Thai.Plugin.Runtime
         internal static bool IsEditable(UILabel label) { return label != null && label.GetComponentInParent<UIInput>() != null; }
         private static GameObject Node(string name)
         {
-            if (container == null) { container = new GameObject("GK1Thai Runtime Fonts"); container.hideFlags = HideFlags.HideAndDontSave; UnityEngine.Object.DontDestroyOnLoad(container); }
+            if (container == null) { container = new GameObject("GKThai Runtime Fonts"); container.hideFlags = HideFlags.HideAndDontSave; UnityEngine.Object.DontDestroyOnLoad(container); }
             var go = new GameObject(name); go.hideFlags = HideFlags.HideAndDontSave; go.transform.SetParent(container.transform, false); return go;
         }
         internal static void Prepare()
         {
             foreach (var font in Resources.LoadAll<UIFont>("")) TryClone(font);
             if (Owned.Count < Plugin.Payload.Fonts.Count) throw new InvalidOperationException("Cannot locate all expected NGUI fonts: " + Owned.Count);
-            Plugin.Log.LogInfo("GK1Thai fonts prepared: " + Owned.Count + "; atlases=" + Atlases.Count);
+            Plugin.Log.LogInfo("GKThai fonts prepared: " + Owned.Count + "; atlases=" + Atlases.Count);
         }
         private static UIAtlas CloneAtlas(UIAtlas source)
         {

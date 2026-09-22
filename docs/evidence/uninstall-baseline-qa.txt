@@ -1,4 +1,4 @@
-GK1Thai uninstall baseline 2026-09-22T07:35:33.4176639Z
+GKThai uninstall baseline 2026-09-22T07:35:33.4176639Z
 PASS stock English locale reference
 PASS stock English no Thai payload
 PASS baseline menu labels exist

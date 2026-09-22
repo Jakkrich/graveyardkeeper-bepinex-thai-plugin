@@ -1,8 +1,8 @@
 using System;
 using HarmonyLib;
-using GK2Thai.Plugin.Runtime;
+using GKThai.Plugin.Runtime;
 
-namespace GK2Thai.Plugin.Patches
+namespace GKThai.Plugin.Patches
 {
     [HarmonyPatch(typeof(GJL), "LoadLanguageResource")]
     internal static class GjlLanguagePatch

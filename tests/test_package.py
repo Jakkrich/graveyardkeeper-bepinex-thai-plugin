@@ -24,13 +24,13 @@ class PackageTests(unittest.TestCase):
 
     def test_embedded_mismatch(self):
         with self.assertRaisesRegex(ValueError, 'Embedded'):
-            package.verify_embedded({'GK1Thai.payload.bin': b'old'}, {'payload.bin': b'new'})
+            package.verify_embedded({'GKThai.payload.bin': b'old'}, {'payload.bin': b'new'})
 
     def test_archive_crc_members_hashes(self):
         with tempfile.TemporaryDirectory() as temporary:
             target = Path(temporary) / 'release.zip'
-            members = {'BepInEx/plugins/GK2Thai/GK2Thai.Plugin.dll': b'dll',
-                       'BepInEx/plugins/GK2Thai/font.ttf': b'font', 'INSTALL_TH.md': b'doc'}
+            members = {'BepInEx/plugins/GKThai/GKThai.Plugin.dll': b'dll',
+                       'BepInEx/plugins/GKThai/font.ttf': b'font', 'INSTALL_TH.md': b'doc'}
             package.write_verified_zip(target, members)
             package.verify_zip(target, members)
             with zipfile.ZipFile(target, 'a') as archive:

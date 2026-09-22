@@ -1,4 +1,4 @@
-# หลักฐาน QA — GK2Thai ภาคแรก 0.1.0
+# หลักฐาน QA — GKThai ภาคแรก 0.1.0
 
 ตรวจวันที่ 22 กันยายน 2026 ทั้งบนสำเนาเกมฐาน pristine และ installation ที่ใช้งานจริง:
 
@@ -21,7 +21,7 @@
 - `Resources.Load<GJL>("Locales/lng_en")` และ dictionary อังกฤษต้นฉบับในหน่วยความจำไม่ถูกแก้
 - หลังย้าย plugin ออก เกมกลับเป็น English/font เดิม และ runtime QA baseline มี `RESULT failures=0`
 - SHA-256 ของ game assets/DLL ทั้งสามไฟล์ก่อนและหลังเปิดเกมพร้อม plugin และหลังถอนตรงกับ pristine ทุกไฟล์
-- ติดตั้งจริงที่ `BepInEx/plugins/GK2Thai` แล้ว โดยมีเฉพาะ `GK2Thai.Plugin.dll` และ `font.ttf`
+- ติดตั้งจริงที่ `BepInEx/plugins/GKThai` แล้ว โดยมีเฉพาะ `GKThai.Plugin.dll` และ `font.ttf`
 - Runtime QA บน installation จริงผ่าน `RESULT failures=0` พร้อม Configuration Manager ที่ติดตั้งอยู่เดิม
 - หลัง runtime QA ไฟล์เกมหลักทั้งสามรายการยังมี SHA-256 ตรงกับ pristine
 

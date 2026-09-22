@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace GK2Thai.Plugin.Runtime
+namespace GKThai.Plugin.Runtime
 {
     internal sealed class GlyphData
     {

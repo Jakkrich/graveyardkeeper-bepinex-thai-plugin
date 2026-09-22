@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using UnityEngine;
 
-namespace GK2Thai.Plugin.Runtime
+namespace GKThai.Plugin.Runtime
 {
     internal static class BuildGuard
     {

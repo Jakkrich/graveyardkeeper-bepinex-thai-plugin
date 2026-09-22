@@ -12,7 +12,7 @@ $csc = Join-Path $env:WINDIR 'Microsoft.NET/Framework64/v4.0.30319/csc.exe'
 $refs = @('mscorlib.dll','System.dll','System.Core.dll','UnityEngine.dll','UnityEngine.CoreModule.dll','UnityEngine.ScreenCaptureModule.dll','UnityEngine.TextRenderingModule.dll') | ForEach-Object { Join-Path $managed $_ }
 $refs += $pristine
 $refs += Join-Path $game 'BepInEx/core/BepInEx.dll'
-$dll = Join-Path $build 'GK2Thai.RuntimeQa.dll'
+$dll = Join-Path $build 'GKThai.RuntimeQa.dll'
 $compile = @('/nologo','/noconfig','/nostdlib+','/target:library',"/out:$dll") + @($refs | ForEach-Object { '/reference:' + $_ })
 $compile += Join-Path $PSScriptRoot 'RuntimeQaProbe.cs'
 & $csc @compile

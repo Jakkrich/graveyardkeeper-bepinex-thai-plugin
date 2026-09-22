@@ -1,4 +1,4 @@
-GK1Thai isolated runtime QA 2026-09-22T08:34:03.4517829Z
+GKThai isolated runtime QA 2026-09-22T09:10:53.8277220Z
 PASS main plugin active
 PASS seven prepared fonts
 PASS locale cloned

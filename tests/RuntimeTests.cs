@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
-using GK2Thai.Plugin.Runtime;
+using GKThai.Plugin.Runtime;
 
 internal static class RuntimeTests
 {

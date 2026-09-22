@@ -7,8 +7,8 @@ using System.Reflection;
 using BepInEx;
 using UnityEngine;
 
-[BepInPlugin("jakkr.gk2thai.gk1.qa", "GK1Thai Runtime QA Probe", "0.1.0")]
-[BepInDependency("jakkr.gk2thai.gk1", BepInDependency.DependencyFlags.SoftDependency)]
+[BepInPlugin("jakkr.gkthai.qa", "GKThai Runtime QA Probe", "0.1.0")]
+[BepInDependency("jakkr.gkthai", BepInDependency.DependencyFlags.SoftDependency)]
 public sealed class RuntimeQaProbe : BaseUnityPlugin
 {
     private readonly List<string> lines = new List<string>();
@@ -20,15 +20,15 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
     private const string Thai = "น้ำ ปู่ ปี่ กุ้ง ซื้อ เก็บเกี่ยว 0123456789";
     private void Awake()
     {
-        if (Environment.GetCommandLineArgs().Contains("--gk1thai-qa-baseline"))
+        if (Environment.GetCommandLineArgs().Contains("--gkthai-qa-baseline"))
         {
-            output = Path.Combine(Paths.BepInExRootPath, "GK1Thai-QA-baseline.txt");
-            lines.Add("GK1Thai uninstall baseline " + DateTime.UtcNow.ToString("o"));
+            output = Path.Combine(Paths.BepInExRootPath, "GKThai-QA-baseline.txt");
+            lines.Add("GKThai uninstall baseline " + DateTime.UtcNow.ToString("o"));
             Flush(); StartCoroutine(Baseline()); return;
         }
-        if (!Environment.GetCommandLineArgs().Contains("--gk1thai-qa")) return;
-        output = Path.Combine(Paths.BepInExRootPath, "GK1Thai-QA.txt");
-        lines.Add("GK1Thai isolated runtime QA " + DateTime.UtcNow.ToString("o"));
+        if (!Environment.GetCommandLineArgs().Contains("--gkthai-qa")) return;
+        output = Path.Combine(Paths.BepInExRootPath, "GKThai-QA.txt");
+        lines.Add("GKThai isolated runtime QA " + DateTime.UtcNow.ToString("o"));
         Flush(); StartCoroutine(Run());
     }
     private IEnumerator Baseline()
@@ -52,7 +52,7 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
             Flush();
         });
         yield return new WaitForEndOfFrame();
-        Test("baseline screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GK1Thai-baseline-menu.png")); });
+        Test("baseline screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GKThai-baseline-menu.png")); });
         yield return new WaitForSecondsRealtime(2);
         lines.Add("RESULT failures=" + failures); Flush(); Application.Quit();
     }
@@ -85,14 +85,14 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
         yield return new WaitForSecondsRealtime(15);
         GameObject sheet = null;
         Test("initialization", delegate {
-            var main = AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "GK2Thai.Plugin");
-            var plugin = main.GetType("GK2Thai.Plugin.Plugin", true);
-            registry = main.GetType("GK2Thai.Plugin.Runtime.FontRegistry", true);
+            var main = AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "GKThai.Plugin");
+            var plugin = main.GetType("GKThai.Plugin.Plugin", true);
+            registry = main.GetType("GKThai.Plugin.Runtime.FontRegistry", true);
             Check("main plugin active", (bool)plugin.GetField("Active", Flags).GetValue(null));
             Check("seven prepared fonts", (int)registry.GetProperty("FontCount", Flags).GetValue(null, null) == 7);
         });
         yield return new WaitForEndOfFrame();
-        Test("menu screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GK1Thai-menu.png")); });
+        Test("menu screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GKThai-menu.png")); });
         yield return null;
         Test("runtime assertions", delegate {
             if (registry == null) throw new InvalidOperationException("Plugin registry unavailable");
@@ -102,7 +102,7 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
             if (originals.Count == 0) throw new InvalidOperationException("No prepared font pairs");
             var root = Resources.FindObjectsOfTypeAll<UIRoot>().FirstOrDefault(r => r.gameObject.activeInHierarchy);
             if (root == null) throw new InvalidOperationException("No live UIRoot after 15 seconds");
-            sheet = new GameObject("GK1Thai QA font sheet"); sheet.transform.SetParent(root.transform, false);
+            sheet = new GameObject("GKThai QA font sheet"); sheet.transform.SetParent(root.transform, false);
             var panel = sheet.AddComponent<UIPanel>(); panel.depth = 30000;
             GJL.LoadLanguageResource("en");
             var resource = Resources.Load<GJL>("Locales/lng_en");
@@ -130,7 +130,7 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
                 var second = NGUIText.GetGlyph(ch, 0);
                 Check("font " + i + " repeat stable", Math.Abs(advance - second.advance) < 0.0001f && !ReferenceEquals(first, second));
                 Check("font " + i + " measure matches", Math.Abs(NGUIText.GetGlyphWidth(ch, 0) - second.advance) < 0.001f);
-                var cjk = registry.Assembly.GetType("GK2Thai.Plugin.Patches.NguiWrapPatch").GetMethod("IsCjkForWrap", Flags);
+                var cjk = registry.Assembly.GetType("GKThai.Plugin.Patches.NguiWrapPatch").GetMethod("IsCjkForWrap", Flags);
                 Check("font " + i + " CJK stays CJK", (bool)cjk.Invoke(null, new object[] { 0x4e00 }));
                 Check("font " + i + " Thai PUA word wrap", !(bool)cjk.Invoke(null, new object[] { ch }));
                 NGUIText.bitmapFont = originals[i]; NGUIText.dynamicFont = null; NGUIText.fontScale = 1;
@@ -155,7 +155,7 @@ public sealed class RuntimeQaProbe : BaseUnityPlugin
         });
         yield return new WaitForSecondsRealtime(2);
         yield return new WaitForEndOfFrame();
-        Test("font sheet screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GK1Thai-font-sheet.png")); });
+        Test("font sheet screenshot", delegate { ScreenCapture.CaptureScreenshot(Path.Combine(Paths.BepInExRootPath, "GKThai-font-sheet.png")); });
         yield return new WaitForSecondsRealtime(2);
         lines.Add("RESULT failures=" + failures); Flush();
         if (sheet != null) UnityEngine.Object.Destroy(sheet);

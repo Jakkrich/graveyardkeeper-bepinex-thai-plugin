@@ -1,6 +1,6 @@
-# คู่มือ Build GK2Thai ตั้งแต่เริ่มจนได้ไฟล์ม็อด
+# คู่มือ Build GKThai ตั้งแต่เริ่มจนได้ไฟล์ม็อด
 
-คู่มือนี้สร้างแพ็ก `GK2Thai` จาก source โดยอ่าน reference และ `resources.assets` จากเกมที่ผู้พัฒนาเป็นเจ้าของ กระบวนการ build ไม่เขียนทับไฟล์ใน `Graveyard Keeper_Data`
+คู่มือนี้สร้างแพ็ก `GKThai` จาก source โดยอ่าน reference และ `resources.assets` จากเกมที่ผู้พัฒนาเป็นเจ้าของ กระบวนการ build ไม่เขียนทับไฟล์ใน `Graveyard Keeper_Data`
 
 ## 1. สิ่งที่ต้องมี
 
@@ -8,7 +8,7 @@
 - Graveyard Keeper ภาคแรกบน Steam รุ่น `1.407`
 - BepInEx `5.4.23.5` x64 สำหรับ Unity Mono ติดตั้งในรากเกม
 - Git, PowerShell 5.1 ขึ้นไป และ Python 3.11 ขึ้นไป
-- `font.ttf` ของแพ็ก GK2Thai รุ่นเดียวกัน ดาวน์โหลดจากแพ็กพร้อมใช้บน Nexus Mods หรือใช้ฟอนต์ที่มีสิทธิ์ใช้งานของตนเองแล้วอัปเดต config/hash
+- `font.ttf` ของแพ็ก GKThai รุ่นเดียวกัน ดาวน์โหลดจากแพ็กพร้อมใช้บน Nexus Mods หรือใช้ฟอนต์ที่มีสิทธิ์ใช้งานของตนเองแล้วอัปเดต config/hash
 
 ตัวอย่างในคู่มือใช้รากเกม:
 
@@ -45,13 +45,13 @@ Get-FileHash -Algorithm SHA256 -LiteralPath `
 
 ## 3. Clone source และสร้าง Python environment
 
-แนะนำให้ clone ใต้ `mods/GK2Thai` ในรากเกม เพื่อใช้ค่า path อัตโนมัติ:
+แนะนำให้ clone ใต้ `mods/GKThai` ในรากเกม เพื่อใช้ค่า path อัตโนมัติ:
 
 ```powershell
 Set-Location $GameRoot
 New-Item -ItemType Directory -Force mods | Out-Null
-git clone https://github.com/Jakkrich/graveyardkeeper-bepinex-thai-plugin.git mods/GK2Thai
-Set-Location mods/GK2Thai
+git clone https://github.com/Jakkrich/graveyardkeeper-bepinex-thai-plugin.git mods/GKThai
+Set-Location mods/GKThai
 
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -63,11 +63,11 @@ python -m pip install -r requirements-dev.txt
 
 ## 4. เตรียมฟอนต์ local
 
-Repository ไม่แจก `font.ttf` ให้สร้าง `.local` แล้วคัดลอกฟอนต์จากแพ็ก GK2Thai บน Nexus Mods:
+Repository ไม่แจก `font.ttf` ให้สร้าง `.local` แล้วคัดลอกฟอนต์จากแพ็ก GKThai บน Nexus Mods:
 
 ```powershell
 New-Item -ItemType Directory -Force .local | Out-Null
-Copy-Item 'D:\Downloads\GK2Thai\BepInEx\plugins\GK2Thai\font.ttf' '.local\font.ttf'
+Copy-Item 'D:\Downloads\GKThai\BepInEx\plugins\GKThai\font.ttf' '.local\font.ttf'
 Get-FileHash -Algorithm SHA256 -LiteralPath '.local\font.ttf'
 ```
 
@@ -129,7 +129,7 @@ payload/payload.bin
 payload/glyphs.png
 payload/metadata.json
 payload/font.ttf
-build/GK2Thai.Plugin.dll
+build/GKThai.Plugin.dll
 build/font.ttf
 build/build-manifest.json
 ```
@@ -154,20 +154,20 @@ python tools/package.py --force
 ไฟล์สุดท้ายอยู่ที่:
 
 ```text
-dist/GK2Thai-GK1-0.1.0-candidate.zip
+dist/GKThai-0.1.0-candidate.zip
 ```
 
 ตรวจสมาชิก ZIP:
 
 ```powershell
-tar -tf dist/GK2Thai-GK1-0.1.0-candidate.zip
+tar -tf dist/GKThai-0.1.0-candidate.zip
 ```
 
 ภายในต้องมี plugin สองไฟล์นี้ และเอกสาร/manifest เท่านั้น:
 
 ```text
-BepInEx/plugins/GK2Thai/GK2Thai.Plugin.dll
-BepInEx/plugins/GK2Thai/font.ttf
+BepInEx/plugins/GKThai/GKThai.Plugin.dll
+BepInEx/plugins/GKThai/font.ttf
 INSTALL_TH.md
 manifest.json
 ```
@@ -187,10 +187,10 @@ powershell -ExecutionPolicy Bypass -File .\install-plugin.ps1 -GameRoot $GameRoo
 - เมนู, บทสนทนา, inventory และ tooltip แสดงภาษาไทย
 - icon และตัวเลขไม่หาย
 - ข้อความหลายบรรทัดตัดคำได้
-- `BepInEx/LogOutput.log` มี `GK1Thai ... active`
+- `BepInEx/LogOutput.log` มี `GKThai ... active`
 - ไม่มี error เรื่อง baseline, payload หรือ font hash
 
-การถอนทำโดยปิดเกมแล้วนำ `BepInEx/plugins/GK2Thai` ออก เกมจะกลับไปใช้ locale/font เดิม เพราะม็อดนี้ไม่แก้ game assets หรือ assemblies
+การถอนทำโดยปิดเกมแล้วนำ `BepInEx/plugins/GKThai` ออก เกมจะกลับไปใช้ locale/font เดิม เพราะม็อดนี้ไม่แก้ game assets หรือ assemblies
 
 ## 11. สิ่งที่ห้าม commit
 

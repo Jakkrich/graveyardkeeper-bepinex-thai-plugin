@@ -1,4 +1,4 @@
-# GK2Thai สำหรับ Graveyard Keeper ภาคแรก
+# GKThai สำหรับ Graveyard Keeper ภาคแรก
 
 รุ่น `0.1.0-candidate` ผ่าน runtime QA บนเกมติดตั้งจริงแล้ว แต่ยังต้องเล่นตรวจหลายฉากด้วยคน ใช้กับภาคแรกเท่านั้น ไม่ใช้กับ GK2 Demo หรือตัวเต็ม ดูหลักฐานใน `docs/QA_TH.md` ของ source repository
 
@@ -22,7 +22,7 @@
 
 1. ปิดเกม
 2. แตก ZIP แล้วคัดลอกโฟลเดอร์ `BepInEx` ไปไว้ในรากเกมที่ตรวจฐานแล้ว
-3. ตรวจว่าภายใต้ `BepInEx/plugins/GK2Thai/` มีเพียง `GK2Thai.Plugin.dll` และ `font.ttf`
+3. ตรวจว่าภายใต้ `BepInEx/plugins/GKThai/` มีเพียง `GKThai.Plugin.dll` และ `font.ttf`
 4. เปิดเกมและเลือกภาษา **English (`en`)** ซึ่งเป็นช่องที่แพ็กไทยแทนข้อความ
 5. ตรวจ `BepInEx/LogOutput.log` ว่า plugin เปิดใช้งานโดยไม่มีข้อผิดพลาดด้าน baseline, payload หรือ font แล้วตรวจภาษาไทย ตัวเลข ไอคอน และการขึ้นบรรทัดในเมนู/บทสนทนา
 
@@ -36,19 +36,19 @@
 
 รูป glyph สร้างล่วงหน้าจากฟอนต์นี้แล้วฝังใน DLL การเปลี่ยน `font.ttf` อย่างเดียวไม่เปลี่ยนภาพที่วาด และ plugin จะปฏิเสธเมื่อ hash ไม่ตรง หากต้องการเปลี่ยนฟอนต์ ให้ปรับ config/font ฝั่ง source แล้วสร้าง payload และ DLL ใหม่ด้วยกัน
 
-สำหรับผู้พัฒนา ดูขั้นตอนครบใน `docs/BUILD_TH.md` หรือเรียกจาก repository ที่ clone ไว้ใต้ `mods/GK2Thai`:
+สำหรับผู้พัฒนา ดูขั้นตอนครบใน `docs/BUILD_TH.md` หรือเรียกจาก repository ที่ clone ไว้ใต้ `mods/GKThai`:
 
 ```powershell
-python mods/GK2Thai/tools/build_payload.py --game-root "$PWD"
-powershell -ExecutionPolicy Bypass -File mods/GK2Thai/build-plugin.ps1 -GameRoot "$PWD"
-python -m unittest discover -s mods/GK2Thai/tests
-python mods/GK2Thai/tools/package.py
+python mods/GKThai/tools/build_payload.py --game-root "$PWD"
+powershell -ExecutionPolicy Bypass -File mods/GKThai/build-plugin.ps1 -GameRoot "$PWD"
+python -m unittest discover -s mods/GKThai/tests
+python mods/GKThai/tools/package.py
 ```
 
 ตัว package ตรวจว่า source ที่ระบุใน build manifest ยังตรงกับตอน build, embedded resources ตรงกับ payload, ฟอนต์ถูกต้อง และ ZIP ผ่าน CRC/member/hash checks หากไฟล์ปลายทางมีอยู่แล้วต้องระบุ `--force` จึงจะแทนที่ได้
 
 ## ถอนม็อด
 
-ปิดเกมแล้วนำโฟลเดอร์ `BepInEx/plugins/GK2Thai` ออก บนฐาน pristine เกมจะกลับมาใช้ข้อความและฟอนต์เดิมโดยไม่ต้องคืน game DLL/assets จากแพ็กนี้ ไฟล์ config/log ของ BepInEx อาจยังคงอยู่และไม่ใช่ส่วนของสองไฟล์ plugin
+ปิดเกมแล้วนำโฟลเดอร์ `BepInEx/plugins/GKThai` ออก บนฐาน pristine เกมจะกลับมาใช้ข้อความและฟอนต์เดิมโดยไม่ต้องคืน game DLL/assets จากแพ็กนี้ ไฟล์ config/log ของ BepInEx อาจยังคงอยู่และไม่ใช่ส่วนของสองไฟล์ plugin
 
 หากยังพบภาษาไทยหลังถอน ให้ตรวจว่าฐานเกมยังมีแพ็กเก่าแบบแก้ไฟล์ติดตั้งอยู่หรือมี plugin ภาษาอื่นหรือไม่ การถอน plugin นี้ไม่คืนไฟล์ที่ถูกแพตช์จากระบบเดิม
